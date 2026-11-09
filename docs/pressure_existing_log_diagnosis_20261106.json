@@ -1,0 +1,134 @@
+{
+  "created_UTC": "2026-11-06 11:04 UTC",
+  "classification": "mechanism diagnosis from already computed field logs, no new patient propagation",
+  "LF": {
+    "3": {
+      "complete_LF_frequencies": 180,
+      "shots": 1980,
+      "physical_data_halfcost": 0.00026024242297635684,
+      "physical_PDE_halfcost": 1.8170408776693396,
+      "unconverged_shots": 0,
+      "CG_iterations_mean_per_frequency": 7.355555555555555,
+      "raw_augmented_after": 1080130.599834024,
+      "physical_normal_max": 0.0029943648844867462
+    },
+    "4": {
+      "complete_LF_frequencies": 180,
+      "shots": 1980,
+      "physical_data_halfcost": 0.000005306833327147435,
+      "physical_PDE_halfcost": 0.0005662834491631782,
+      "unconverged_shots": 5,
+      "CG_iterations_mean_per_frequency": 9.733333333333333,
+      "raw_augmented_after": 1902079.652519419,
+      "physical_normal_max": 0.004108287672617883
+    },
+    "ratios_step4_over3": {
+      "physical_data_halfcost": 0.02039188409965566,
+      "physical_PDE_halfcost": 0.00031165146371914975,
+      "raw_augmented_after": 1.7609719165549964
+    },
+    "scope": "complete LF field phase only, not full material update or material RF accuracy"
+  },
+  "penalty": {
+    "3": {
+      "lf": {
+        "frequencies": 180,
+        "Gamma_over_lambda_min_median_max": [
+          522.7240190011916,
+          1377.253906879048,
+          1809.6090536712136
+        ],
+        "lambda_over_Gamma_min_median_max": [
+          0.000552605546469425,
+          0.0007260828649760665,
+          0.0019130553861113478
+        ],
+        "lambda_min_median_max": [
+          0.046226079091429714,
+          0.2574495984250257,
+          0.7187036522845665
+        ],
+        "Gamma_min_median_max": [
+          24.16348184533909,
+          389.82885291004897,
+          1235.4231477246526
+        ]
+      },
+      "point3": {
+        "frequencies": 270,
+        "Gamma_over_lambda_min_median_max": [
+          520.6989769056148,
+          1373.1392912767556,
+          1864.9227470555215
+        ],
+        "lambda_over_Gamma_min_median_max": [
+          0.0005362152408612497,
+          0.0007282614082278104,
+          0.0019204954193356642
+        ],
+        "lambda_min_median_max": [
+          0.043636449244804684,
+          0.2572303838857852,
+          0.7186179773330263
+        ],
+        "Gamma_min_median_max": [
+          22.721454477563586,
+          389.07222718654543,
+          1242.0068065808493
+        ]
+      }
+    },
+    "4": {
+      "lf": {
+        "frequencies": 180,
+        "Gamma_over_lambda_min_median_max": [
+          523.2633966443681,
+          1379.0514045141654,
+          1811.0563765972854
+        ],
+        "lambda_over_Gamma_min_median_max": [
+          0.000552163926491817,
+          0.000725136355127016,
+          0.0019110834169041681
+        ],
+        "lambda_min_median_max": [
+          0.046226079091429714,
+          0.2574495984250257,
+          0.7187036522845665
+        ],
+        "Gamma_min_median_max": [
+          24.188415158932717,
+          390.2459815981276,
+          1236.411237523095
+        ]
+      },
+      "point3": {
+        "frequencies": 41,
+        "Gamma_over_lambda_min_median_max": [
+          521.2152041601007,
+          633.3004736238836,
+          773.9255763251613
+        ],
+        "lambda_over_Gamma_min_median_max": [
+          0.0012921139068026543,
+          0.0015790292943849886,
+          0.0019185933027633473
+        ],
+        "lambda_min_median_max": [
+          0.043636449244804684,
+          0.1526551456443849,
+          0.22111016016453505
+        ],
+        "Gamma_min_median_max": [
+          22.743980801952745,
+          97.54186269045066,
+          157.11256398832924
+        ]
+      }
+    },
+    "evidence": "existing required receiver Gram and frozen penalty logs only; no new propagation or material probe"
+  },
+  "inference": "Original positive lambda was calibrated with the early neural field inverse and then intentionally frozen. The current native inverse receiver Gram is much larger. At step4 median LF lambda/Gamma is 0.000725136 vs the nominal initial .01 fraction (13.79 times weaker in current inverse coordinates). This is an algorithm-scale issue, not evidence that the data are unidentifiable. A low weighted PDE residual does not guarantee a low propagated material RF residual.",
+  "limit": "Gamma is the receiver Gram of the qualified approximate field inverse, not a certified exact ||CB^-1||² over every frequency. No completed step4 material result yet; no successful three-map claim.",
+  "route": "Prepared scalar-pressure route uses exact receiver Gram of its current approximate inverse to select .01*Gamma once per frequency. It also changes the lift metric, uses pressure density flux columns, starts from RF-selected material and new consistent duals. If it improves maps, do not attribute improvement to pressure elimination alone."
+}

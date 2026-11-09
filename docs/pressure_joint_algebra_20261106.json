@@ -1,0 +1,22 @@
+{
+  "scope": "NEW receiver-space joint kernels on synthetic CPU arrays",
+  "GPU_used": false,
+  "patient_propagation": 0,
+  "material_FD_experiments": 0,
+  "Born_transpose_relative": 1.01893248369851e-15,
+  "receiver_whitening_relative": 8.348800250035168e-16,
+  "projected_material_gradient_relative": 1.0336113770808155e-15,
+  "same_node_coupled_curvature_relative": [
+    0,
+    1.2560061734021689e-16,
+    1.223860973189298e-16
+  ],
+  "simultaneous_field_elimination_relative": 3.0881757431619816e-16,
+  "nonlinear_joint_objective_accounting_relative": 0,
+  "consistent_joint_dual_relative": 0,
+  "zero_joint_line_error": 0,
+  "cached_joint_backtracking_relative": 1.0417063756159276e-16,
+  "cached_joint_objective_accounting_relative": 0,
+  "same_step_curvature_diagnostic_relative": 2.9555146133168716e-16,
+  "passed": true
+}

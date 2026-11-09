@@ -1,0 +1,85 @@
+{
+  "scope": "existing completed native-time reconstruction; no new experiment",
+  "root": "out/v5/reconstruction_time_v2_train_200",
+  "sample": "train_200",
+  "depth_mm": [
+    1,
+    43
+  ],
+  "maps": {
+    "c_m_s": {
+      "initial": {
+        "rmse": 54.330571826306524,
+        "mae": 44.80194160889698,
+        "correlation": null
+      },
+      "reconstruction": {
+        "rmse": 54.21235702705683,
+        "mae": 44.655334855830645,
+        "correlation": 0.10258806767242579
+      }
+    },
+    "density_kg_m3": {
+      "initial": {
+        "rmse": 50.45294163094471,
+        "mae": 46.71377938848015,
+        "correlation": null
+      },
+      "reconstruction": {
+        "rmse": 50.57244846118218,
+        "mae": 46.75420991072922,
+        "correlation": -0.006963620993168463
+      }
+    },
+    "alpha_dB_cm_MHz1p1": {
+      "initial": {
+        "rmse": 0.12284411954193,
+        "mae": 0.1013712140479497,
+        "correlation": null
+      },
+      "reconstruction": {
+        "rmse": 0.1228172142372483,
+        "mae": 0.10134493391884572,
+        "correlation": 0.07659182926683561
+      }
+    }
+  },
+  "stage3": {
+    "evaluation": 67,
+    "stage": 3,
+    "data_loss": 0.12868350930511951,
+    "objective": 0.12868941798524247,
+    "peak_GiB_per_worker": [
+      4.524742126464844,
+      4.524742126464844
+    ],
+    "elapsed_seconds": 27041.400817394257
+  },
+  "stage3_result": {
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "success": false,
+    "iterations": 18,
+    "evaluations": 21,
+    "best_objective": 0.12868941798524247
+  },
+  "original_solver_LF": {
+    "material": "/home_nvme/zhuangyang/nsrno/out/v5/reconstruction_time_v2_train_200/final_material.npy",
+    "source": "lf",
+    "sample": "train_200",
+    "solver": "original UltraWave; independent of new CUDA implementation",
+    "relative_rms": 0.27045862464603665,
+    "windows": {
+      "0-8": 0.18281371203763375,
+      "8-18": 0.22523973140024406,
+      "18-36": 0.5474794456248944,
+      "36-60.025": 0.8837823917771954
+    },
+    "seconds": 208.671612739563
+  },
+  "source_sha256": {
+    "final_material.metrics.json": "d1078b7cecb0f59fd3e33248400a8ecd57ea03e50cc3318d174560ba6126e51e",
+    "stage3_best.json": "8904573b493940bc72a26aa05b667dbfa5f91c2812c898e5b2d162830e4a3c11",
+    "stage3_result.json": "7e2582624cd6ee7a391d98495377a92d450d9cf47d3f957c93f3d23675435377",
+    "final_material_original_lf.json": "1558877472c8018971cf7121f49e4c2e672c83241efaa8c1d941bc47dec94b69"
+  }
+}

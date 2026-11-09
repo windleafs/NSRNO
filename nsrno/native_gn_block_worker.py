@@ -1,0 +1,149 @@
+"""Unchanged native JVP/VJP with persistent per-shot HVP images.
+
+Each stored float32 image is the existing float32 physical pullback before
+its promotion into the float64 aggregate. No additional waves are solved.
+"""
+import ctypes
+if ctypes.CDLL(None).prctl(41,1,0,0,0)!=0:
+    raise RuntimeError('Cannot disable process THP')
+from pathlib import Path
+import gc
+import time
+import traceback
+import numpy as np
+import torch
+from .time_acquisition import TimeAcquisition
+from .rf_depth_weights import DepthWeights,WEIGHTS
+from .native_time import native_wave
+from .native_tangent import tangent,pullback
+from .native_gn_worker import physical_pullback
+from .wri_worker import atomic
+
+
+def worker(rank,device,jobs,results,sample,chunk,cap_gib,folder,workers):
+    token=-1
+    try:
+        torch.set_num_threads(1)
+        torch.cuda.set_device(device)
+        torch.backends.cuda.matmul.allow_tf32=False
+        torch.backends.cudnn.allow_tf32=False
+        torch.cuda.set_per_process_memory_fraction(
+            cap_gib*2**30/torch.cuda.get_device_properties(device).total_memory,device)
+        device=f'cuda:{device}'
+        folder=Path(folder).resolve()
+        folder.mkdir(parents=True,exist_ok=True)
+        cache={}
+        edge=torch.from_numpy(np.load('out/v5/uno_triparam_v1/known_edge_alpha.npy')).to(device)
+        for source in ['lf','point3']:
+            acquisition=TimeAcquisition(source,sample,device=device,chunk=chunk)
+            if len(acquisition.angles)!=11 or acquisition.observed.shape[1]!=192:
+                raise ValueError('Require all 11 shots and 192 receivers')
+            depth=DepthWeights(acquisition)
+            coefficients=torch.tensor([.5*w/d for w,d in zip(WEIGHTS,depth.den)],
+                device=device,dtype=torch.float32)
+            cache[source]=(acquisition,depth,coefficients[depth.bins.long()])
+        atomic(folder/'ready.json',{'rank':rank,'device':device,'complete_acquisition':True,
+            'objective':'unchanged full native geometry-normalized RF',
+            'source_resolved_HVP_export':True,'source_resolved_gradient_export':True,'extra_wave_solves':0,'truth_read':False})
+        while True:
+            job=jobs.get()
+            if job is None:break
+            token=job['token']
+            kind=job['kind']
+            started=time.time()
+            torch.cuda.reset_peak_memory_stats()
+            m=torch.from_numpy(job['material']).to(device)
+            mask=(torch.arange(m.shape[1],device=device)[:,None]>=80).expand(m.shape[1:])
+            direction=None
+            shot_images=[]
+            residual_features=[]
+            if kind=='hvp':
+                u=torch.from_numpy(job['direction']).to(device=device,dtype=torch.float32)
+                direction=torch.stack([m[0]*.05*u[0],m[1]*(.1*u[1]-.05*u[0]),
+                    (m[2]-edge)*.7*u[2]])*mask
+                del u
+                image_folder=folder/f'hvp{token:04d}'
+                image_folder.mkdir(exist_ok=False)
+            if kind=='gradient':
+                image_folder=folder/f'gradient{token:04d}'
+                image_folder.mkdir(exist_ok=False)
+            need_gradient=kind=='gradient'
+            if need_gradient:m.requires_grad_(True)
+            aggregate=torch.zeros_like(m,dtype=torch.float64)
+            loss_total=0.
+            tangent_energy=0.
+            groups={}
+            for source,(a,depth,weights) in cache.items():
+                bins_error=np.zeros(5,np.float64)
+                error=0.
+                for shot in range(rank,11,workers):
+                    atomic(folder/'progress.json',{'token':token,'kind':kind,'source':source,
+                        'shot':shot,'state':'propagating','started_unix_s':time.time()})
+                    if need_gradient:m.grad=None
+                    waveform=a.waveform(shot)
+                    if kind=='hvp':
+                        with torch.no_grad():
+                            raw,draw,cp=tangent(m,direction,waveform,a.si,a.sw,a.ri,a.rw,a.config)
+                            delta=(a.response@draw).T
+                            weighted=weights[shot]*delta
+                            energy=float((weighted.double()*delta.double()).sum())
+                            tangent_energy+=energy
+                            residual=(a.response.T@weighted.T).contiguous()
+                            gradient=pullback(m,waveform,a.si,a.sw,a.ri,a.rw,a.config,cp,residual)
+                            image=physical_pullback(m,edge,gradient)*mask
+                            aggregate+=image.double()
+                            image_path=image_folder/f'{source}_{shot:02d}.npy'
+                            temporary=image_path.with_suffix('.partial.npy')
+                            np.save(temporary,image.cpu().numpy())
+                            temporary.replace(image_path)
+                            shot_images.append({'name':f'{source}_{shot:02d}',
+                                'source':source,'shot':shot,'image':str(image_path),
+                                'weighted_tangent_energy':energy,'dtype':'float32'})
+                            del raw,draw,cp,delta,weighted,residual,gradient,image
+                    else:
+                        with torch.set_grad_enabled(need_gradient):
+                            raw=native_wave(m,waveform,a.si,a.sw,a.ri,a.rw,a.config)
+                            reference=torch.from_numpy(a.reference[shot].copy()).to(device)
+                            prediction=(a.response@(raw-reference)).T
+                            difference=prediction-a.observed[shot]
+                            loss=.5*(weights[shot].double()*difference.double().square()).sum()
+                            if need_gradient:loss.backward()
+                        loss_total+=float(loss.detach())
+                        if need_gradient:
+                            with torch.no_grad():
+                                image=physical_pullback(m.detach(),edge,m.grad)*mask
+                                aggregate+=image.double()
+                                image_path=image_folder/f'{source}_{shot:02d}.npy'
+                                temporary=image_path.with_suffix('.partial.npy')
+                                np.save(temporary,image.cpu().numpy());temporary.replace(image_path)
+                                residual_features.append({'name':f'{source}_{shot:02d}',
+                                    'source':source,'shot':shot,'image':str(image_path),
+                                    'weighted_residual_energy':2*float(loss.detach()),'dtype':'float32'})
+                                m.grad=None
+                                del image
+                        diff=difference.detach().double()
+                        error+=float(diff.square().sum())
+                        for k in range(5):
+                            bins_error[k]+=float(diff[depth.bins[shot]==k].square().sum())
+                        del raw,reference,prediction,difference,loss,diff
+                    del waveform
+                    atomic(folder/'progress.json',{'token':token,'kind':kind,'source':source,
+                        'shot':shot,'state':'completed','elapsed_seconds':time.time()-started,
+                        'peak_Torch_GiB':torch.cuda.max_memory_allocated()/2**30})
+                if kind!='hvp':
+                    groups[source]={'error_squared':error,
+                        'energy':float(a.observed.double().square().sum()),
+                        'window_error_squared':bins_error.tolist(),'window_energy':depth.den}
+            result={'rank':rank,'token':token,'kind':kind,'loss':loss_total,
+                'gradient':aggregate.detach().cpu().numpy() if kind in ['hvp','gradient'] else None,
+                'groups':groups,'tangent_energy':tangent_energy,'seconds':time.time()-started,
+                'peak_Torch_GiB':torch.cuda.max_memory_allocated()/2**30,
+                'source_curvature':shot_images,'residual_features':residual_features,'error':None}
+            results.put(result)
+            del m,aggregate,direction,job,result
+            gc.collect()
+    except BaseException:
+        message=traceback.format_exc()
+        atomic(Path(folder)/'error.json',{'rank':rank,'token':token,'error':message})
+        results.put({'rank':rank,'token':token,'error':message})
+        raise

@@ -1,0 +1,24 @@
+{
+  "scope": "new coupled trust-direction numerical algebra on synthetic CPU arrays",
+  "RMS_r_beta_t": [
+    0.0029930183291650837,
+    0.003977465687928892,
+    0.004997781759216481
+  ],
+  "trust": [
+    0.003,
+    0.004,
+    0.005
+  ],
+  "dual_shifts": [
+    28.636079368146923,
+    16.724638625540408,
+    3.4594696792533153
+  ],
+  "KKT_relative": 5.768653160248309e-10,
+  "gradient_dot_step": -4.666858393263755,
+  "patient_propagation": 0,
+  "GPU_used": false,
+  "passed": true,
+  "all_joint_Python_syntax_passed": true
+}

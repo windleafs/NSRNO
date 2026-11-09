@@ -1,0 +1,28 @@
+{
+  "pressure": {
+    "scope": "new scalar-pressure code algebra, synthetic CPU arrays only",
+    "Schur_vs_existing_pressure_relative": 1.4063416870397488e-15,
+    "pressure_adjoint_relative": 1.4752370581216899e-15,
+    "new_material_stencil_relative": 1.5921798232381927e-10,
+    "new_material_adjoint_relative": 9.007450288725929e-15,
+    "packed_normal_relative": 3.315141374343347e-15,
+    "packed_right_relative": 2.357791980036551e-15,
+    "duplicate_ghost_diagonal_relative": [
+      6.927508299292939e-16,
+      7.768019598528344e-16,
+      0,
+      0
+    ],
+    "patient_wave_solves": 0,
+    "patient_truth_read": false,
+    "GPU_used": false,
+    "passed": true
+  },
+  "receiver": {
+    "scope": "new scalar receiver preconditioner, synthetic CPU matrix only",
+    "relative_error": 1.1318856988021912e-7,
+    "GPU_used": false,
+    "patient_wave_solves": 0,
+    "passed": true
+  }
+}
