@@ -1,0 +1,170 @@
+{
+  "scoring_extent_mm": [
+    [
+      -28.0,
+      28.0
+    ],
+    [
+      0.0,
+      15.0
+    ]
+  ],
+  "shallow_grid_shape": [
+    301,
+    1121
+  ],
+  "residual_domain": "all recorded frequencies and receive channels for the indicated transmit split",
+  "metrics": {
+    "global_binary": {
+      "fat_dice": 0.4587325456498389,
+      "gland_dice": 0.6998257449801765,
+      "density_rmse_kg_m3": 48.95465264858428,
+      "compressibility_rmse_pp": 11.981546554442676,
+      "gland_area_mm2": 352.2360363456724,
+      "train_relative_residual": 0.6611278738271679,
+      "holdout_relative_residual": 0.6967531004018351,
+      "all_relative_residual": 0.6682372781709472
+    },
+    "projected_hard": {
+      "fat_dice": 0.4622203074934705,
+      "gland_dice": 0.7048178604028237,
+      "density_rmse_kg_m3": 49.637649211641744,
+      "compressibility_rmse_pp": 12.124382292797282,
+      "gland_area_mm2": 356.4500299409448,
+      "train_relative_residual": 0.737110383155034,
+      "holdout_relative_residual": 0.7712642388819146,
+      "all_relative_residual": 0.7439062862350353
+    },
+    "fitted_soft": {
+      "fat_dice": 0.44526438706031024,
+      "gland_dice": 0.6850085349934733,
+      "density_rmse_kg_m3": 50.34669990685776,
+      "compressibility_rmse_pp": 12.291279584380984,
+      "gland_area_mm2": 348.2804075417356,
+      "train_relative_residual": 0.5752936640038576,
+      "holdout_relative_residual": 0.6102710113818445,
+      "all_relative_residual": 0.5822923581365574
+    },
+    "fitted_hard": {
+      "fat_dice": 0.44470160357083816,
+      "gland_dice": 0.6846221165966808,
+      "density_rmse_kg_m3": 51.075660417023705,
+      "compressibility_rmse_pp": 12.458150116827827,
+      "gland_area_mm2": 351.91533542861623,
+      "train_relative_residual": 0.5885338009766683,
+      "holdout_relative_residual": 0.6225032772614227,
+      "all_relative_residual": 0.595322793968513
+    },
+    "full_fov_cold_spline_crop": {
+      "fat_dice": 0.6487284113975351,
+      "gland_dice": 0.49873803835823516,
+      "density_rmse_kg_m3": 49.79547687558304,
+      "compressibility_rmse_pp": 12.219867379904667,
+      "gland_area_mm2": 105.18349182863541,
+      "train_relative_residual": 0.30733902002123237,
+      "holdout_relative_residual": 0.3218041532862672,
+      "all_relative_residual": 0.3102180949307072
+    },
+    "truth": {
+      "gland_area_mm2": 267.15883317973896
+    }
+  },
+  "depth_bands": [
+    {
+      "depth_range_mm": [
+        0.0,
+        5.0
+      ],
+      "metrics": {
+        "global_binary": {
+          "fat_dice": 0.5855206867047555,
+          "gland_dice": 0.7709017428643596,
+          "density_rmse_kg_m3": 38.35968600903607,
+          "compressibility_rmse_pp": 8.798894541397539,
+          "gland_area_mm2": 65.03203480955476
+        },
+        "projected_hard": {
+          "fat_dice": 0.585043017868961,
+          "gland_dice": 0.7742646046532973,
+          "density_rmse_kg_m3": 38.40218296811361,
+          "compressibility_rmse_pp": 8.804853213639495,
+          "gland_area_mm2": 65.39611437409629
+        },
+        "fitted_hard": {
+          "fat_dice": 0.500789354984213,
+          "gland_dice": 0.715747801246148,
+          "density_rmse_kg_m3": 41.38769757532095,
+          "compressibility_rmse_pp": 9.541889430279394,
+          "gland_area_mm2": 67.3094290101219
+        },
+        "truth": {
+          "gland_area_mm2": 43.709953617724715
+        }
+      }
+    },
+    {
+      "depth_range_mm": [
+        5.0,
+        10.0
+      ],
+      "metrics": {
+        "global_binary": {
+          "fat_dice": 0.5166231591390434,
+          "gland_dice": 0.6771851818243688,
+          "density_rmse_kg_m3": 51.725870960108224,
+          "compressibility_rmse_pp": 12.835803875343352,
+          "gland_area_mm2": 121.08458925648202
+        },
+        "projected_hard": {
+          "fat_dice": 0.5123551549965336,
+          "gland_dice": 0.6766138855054811,
+          "density_rmse_kg_m3": 53.03119034583615,
+          "compressibility_rmse_pp": 13.112695301779004,
+          "gland_area_mm2": 122.5308817934682
+        },
+        "fitted_hard": {
+          "fat_dice": 0.5124686065095513,
+          "gland_dice": 0.6941889609027372,
+          "density_rmse_kg_m3": 52.813986601055475,
+          "compressibility_rmse_pp": 13.06067762476311,
+          "gland_area_mm2": 127.40171188750865
+        },
+        "truth": {
+          "gland_area_mm2": 97.97007835652403
+        }
+      }
+    },
+    {
+      "depth_range_mm": [
+        10.0,
+        15.0
+      ],
+      "metrics": {
+        "global_binary": {
+          "fat_dice": 0.3235452390302078,
+          "gland_dice": 0.690549127826021,
+          "density_rmse_kg_m3": 55.10214089654431,
+          "compressibility_rmse_pp": 13.713097800909406,
+          "gland_area_mm2": 166.1194122796357
+        },
+        "projected_hard": {
+          "fat_dice": 0.33835845896147404,
+          "gland_dice": 0.7003852346390849,
+          "density_rmse_kg_m3": 55.662462365474944,
+          "compressibility_rmse_pp": 13.823631875601697,
+          "gland_area_mm2": 168.52303377338035
+        },
+        "fitted_hard": {
+          "fat_dice": 0.3445478014998156,
+          "gland_dice": 0.6648958552493163,
+          "density_rmse_kg_m3": 57.59192222557479,
+          "compressibility_rmse_pp": 14.265502740580347,
+          "gland_area_mm2": 157.20419453098563
+        },
+        "truth": {
+          "gland_area_mm2": 125.47880120549024
+        }
+      }
+    }
+  ]
+}

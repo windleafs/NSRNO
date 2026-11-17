@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "case": "projected_hard",
+      "relative_residual": [
+        0.737110383155034,
+        0.7712642388819146,
+        0.7439062862350351
+      ],
+      "data_cost": [
+        0.2716658584774805,
+        0.29742426308904957,
+        0.27669828135000096
+      ]
+    },
+    {
+      "case": "fitted_soft",
+      "relative_residual": [
+        0.5752936640038576,
+        0.6102710113818446,
+        0.5822923581365571
+      ],
+      "data_cost": [
+        0.16548139992149172,
+        0.18621535366650974,
+        0.16953219517211623
+      ]
+    },
+    {
+      "case": "fitted_hard",
+      "relative_residual": [
+        0.5885338009766684,
+        0.6225032772614226,
+        0.5953227939685124
+      ],
+      "data_cost": [
+        0.17318601744602238,
+        0.1937551651006058,
+        0.17720461450923794
+      ]
+    }
+  ],
+  "split_names": [
+    "train",
+    "holdout",
+    "full"
+  ],
+  "fit": {
+    "hard_selected_stage": 3,
+    "soft_paired_temperature_mm": 0.1,
+    "baseline": {
+      "relative_train_residual": 0.6611278738271679,
+      "train_data_term": 0.21854503277561582,
+      "train_perimeter": 0.0007797461166313256,
+      "train_objective": 0.21932477889224714
+    },
+    "stages": [
+      {
+        "stage": 0,
+        "temperature_mm": 0.45,
+        "hard": {
+          "relative_train_residual": 0.7371103831550339,
+          "train_data_term": 0.2716658584774804,
+          "train_perimeter": 0.000699441550667464,
+          "train_objective": 0.2723653000281479
+        },
+        "soft": {
+          "relative_train_residual": 0.7056472391712718,
+          "train_data_term": 0.24896901307501906,
+          "train_perimeter": 0.000673581392511328,
+          "train_objective": 0.2496425944675304
+        }
+      },
+      {
+        "stage": 1,
+        "temperature_mm": 0.45,
+        "hard": {
+          "relative_train_residual": 0.705121025945055,
+          "train_data_term": 0.24859783061490348,
+          "train_perimeter": 0.0006963237407483116,
+          "train_objective": 0.2492941543556518
+        },
+        "soft": {
+          "relative_train_residual": 0.6058094792764978,
+          "train_data_term": 0.1835025625906307,
+          "train_perimeter": 0.0006840328172814794,
+          "train_objective": 0.18418659540791216
+        },
+        "iterations": 12,
+        "evaluations": 13,
+        "status": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      },
+      {
+        "stage": 2,
+        "temperature_mm": 0.23,
+        "hard": {
+          "relative_train_residual": 0.6224105189527546,
+          "train_data_term": 0.19369742705151863,
+          "train_perimeter": 0.0006899759684886105,
+          "train_objective": 0.19438740302000723
+        },
+        "soft": {
+          "relative_train_residual": 0.5796412908104899,
+          "train_data_term": 0.16799201300622543,
+          "train_perimeter": 0.0006851430471682936,
+          "train_objective": 0.16867715605339373
+        },
+        "iterations": 14,
+        "evaluations": 15,
+        "status": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      },
+      {
+        "stage": 3,
+        "temperature_mm": 0.1,
+        "hard": {
+          "relative_train_residual": 0.5885338009766683,
+          "train_data_term": 0.1731860174460223,
+          "train_perimeter": 0.0006968048915236848,
+          "train_objective": 0.17388282233754598
+        },
+        "soft": {
+          "relative_train_residual": 0.5752936640038576,
+          "train_data_term": 0.1654813999214917,
+          "train_perimeter": 0.0006914748352208472,
+          "train_objective": 0.16617287475671252
+        },
+        "iterations": 18,
+        "evaluations": 20,
+        "status": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      }
+    ],
+    "pressure_calls": 57,
+    "distance_projection_rmse_mm": 0.12615482866542457
+  },
+  "depths_mm": [
+    0.0,
+    15.0
+  ],
+  "lateral_bounds_mm": [
+    -28.0,
+    28.0
+  ],
+  "coefficient_grid_shape": [
+    16,
+    50
+  ],
+  "temperatures_and_budgets": [
+    [
+      0.45,
+      12
+    ],
+    [
+      0.23,
+      14
+    ],
+    [
+      0.1,
+      18
+    ]
+  ],
+  "projection_label_changes": 1318,
+  "unmodified_deep_pixels": 672600,
+  "baseline_replay_relative_error": 8.64081553196201e-17,
+  "cache_checks": {
+    "adjoint_errors": [
+      4.617509944050767e-09,
+      8.832856115487719e-08,
+      4.152924306653203e-09
+    ],
+    "affine_reference_relative_error": 0.0,
+    "cache_precision_comparison": [
+      {
+        "frequency_mhz": 0.1375,
+        "forward_relative_error": 3.067781087372071e-07,
+        "adjoint_relative_error": 9.736283425584669e-08,
+        "dot_product_relative_error": 4.832266734433138e-08
+      },
+      {
+        "frequency_mhz": 0.48750000000000004,
+        "forward_relative_error": 3.129289953026501e-07,
+        "adjoint_relative_error": 1.0572153200298962e-07,
+        "dot_product_relative_error": 7.168660264514884e-08
+      },
+      {
+        "frequency_mhz": 0.8625000000000002,
+        "forward_relative_error": 3.1018941417852595e-07,
+        "adjoint_relative_error": 1.1044444241531595e-07,
+        "dot_product_relative_error": 2.3467259752033134e-08
+      }
+    ]
+  },
+  "setup_seconds": 44.72810620709788,
+  "elapsed_seconds": 91.65973039600067
+}
