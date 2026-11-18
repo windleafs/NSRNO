@@ -2,6 +2,17 @@
 
 NSRNO 用 V5 乳腺数据检验固定单侧平面波采集下的声速和密度反演。项目使用独立的数据读取器与 UltraWave 物理参考。设计见 [双参数 RF 反演设计](docs/superpowers/specs/2026-11-04-nsrno-dual-parameter-rf-design.md)。
 
+## 双频弧形阵列仿真实验
+
+新增可独立运行的 [两侧低频、中央高频阵列实验](experiments/theranostic_arc/README.md)：使用二维变密度 Helmholtz 正演生成散射数据，联合反演压缩率与逆密度，对比中央高频、中央双频、平直两侧低频和弧形两侧低频四种采集。只需要 NumPy、SciPy 和 Matplotlib 等 CPU 依赖，不需要原有 V5 数据或模型权重。
+
+```bash
+python -m pip install -r experiments/theranostic_arc/requirements.txt
+python -m nsrno.theranostic --config experiments/theranostic_arc/quick.json --out out/theranostic_quick --replay-fullwave
+```
+
+实验包含匹配 Born 对照、完整波场回放、互易性安全的端口留出、网格细化及硬件接收能力检查。面内侧阵是理想几何，具体假设与频率限制见实验说明。
+
 ## 运行环境
 
 在本目录下运行。CPU 数据读取与 UltraWave 仿真分别使用独立 Python 进程，避免在 GPU 仿真进程中载入 PyTorch。
