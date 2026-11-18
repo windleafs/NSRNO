@@ -1,0 +1,386 @@
+[
+  {
+    "kind": "inverse_background",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.15,
+    "sources": 24,
+    "relative_linear_residual": 1.9800199122137776e-14,
+    "factor_seconds": 0.47534339799994996,
+    "elapsed_seconds": 0.6414663240000209,
+    "lu_nonzeros": 4208155
+  },
+  {
+    "kind": "data_fullwave",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.15,
+    "sources": 24,
+    "relative_linear_residual": 2.0475618915751563e-14,
+    "factor_seconds": 0.31517338599996947,
+    "elapsed_seconds": 0.5232732009999381,
+    "lu_nonzeros": 4208495
+  },
+  {
+    "kind": "data_nodal_born",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "frequency_mhz": 0.15,
+    "sources": 24,
+    "relative_linear_residual": 6.277230922469683e-14,
+    "factor_seconds": 0.2819530660001419,
+    "elapsed_seconds": 0.4498154279999653
+  },
+  {
+    "kind": "inverse_background",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.25,
+    "sources": 24,
+    "relative_linear_residual": 2.7705356276176823e-14,
+    "factor_seconds": 0.2614845430000514,
+    "elapsed_seconds": 0.43565737499989154,
+    "lu_nonzeros": 4211588
+  },
+  {
+    "kind": "data_fullwave",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.25,
+    "sources": 24,
+    "relative_linear_residual": 2.6531937720057785e-14,
+    "factor_seconds": 0.2697945519998939,
+    "elapsed_seconds": 0.4812080849999347,
+    "lu_nonzeros": 4211596
+  },
+  {
+    "kind": "data_nodal_born",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "frequency_mhz": 0.25,
+    "sources": 24,
+    "relative_linear_residual": 6.522507917450499e-14,
+    "factor_seconds": 0.27158497200002785,
+    "elapsed_seconds": 0.4238992220000455
+  },
+  {
+    "kind": "inverse_background",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.4240769803064014e-14,
+    "factor_seconds": 0.2326188679999177,
+    "elapsed_seconds": 0.31865283699994507,
+    "lu_nonzeros": 4221810
+  },
+  {
+    "kind": "data_fullwave",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.2493454219441515e-14,
+    "factor_seconds": 0.2446487940001134,
+    "elapsed_seconds": 0.3382277510002041,
+    "lu_nonzeros": 4220359
+  },
+  {
+    "kind": "data_nodal_born",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 5.908949190779884e-14,
+    "factor_seconds": 0.25455488600005083,
+    "elapsed_seconds": 0.34348039400015296
+  },
+  {
+    "kind": "inverse_background",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.3466582476086212e-14,
+    "factor_seconds": 0.2500146570000652,
+    "elapsed_seconds": 0.3336030960001608,
+    "lu_nonzeros": 4234647
+  },
+  {
+    "kind": "data_fullwave",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.3810596447796106e-14,
+    "factor_seconds": 0.2505152269998234,
+    "elapsed_seconds": 0.3478022309998323,
+    "lu_nonzeros": 4233828
+  },
+  {
+    "kind": "data_nodal_born",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 7.148258685687087e-14,
+    "factor_seconds": 0.2637658390001434,
+    "elapsed_seconds": 0.35257126999999855
+  },
+  {
+    "scenario": "central_hf",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.431281837831395e-14,
+    "factor_seconds": 0.23814012800016826,
+    "elapsed_seconds": 0.32441219900010765,
+    "lu_nonzeros": 4221810
+  },
+  {
+    "scenario": "central_hf",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.5351451228339842e-14,
+    "factor_seconds": 0.2621422600000187,
+    "elapsed_seconds": 0.3505400369999734,
+    "lu_nonzeros": 4234643
+  },
+  {
+    "scenario": "central_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.15,
+    "sources": 8,
+    "relative_linear_residual": 2.0974053478421912e-14,
+    "factor_seconds": 0.23380302999999003,
+    "elapsed_seconds": 0.3152863850000358,
+    "lu_nonzeros": 4208155
+  },
+  {
+    "scenario": "central_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.25,
+    "sources": 8,
+    "relative_linear_residual": 2.8517836894270525e-14,
+    "factor_seconds": 0.24571590799996557,
+    "elapsed_seconds": 0.29652459299995826,
+    "lu_nonzeros": 4211526
+  },
+  {
+    "scenario": "central_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.2987471746516208e-14,
+    "factor_seconds": 0.25247439899999335,
+    "elapsed_seconds": 0.33598193900002116,
+    "lu_nonzeros": 4220772
+  },
+  {
+    "scenario": "central_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.597269203830001e-14,
+    "factor_seconds": 0.24998428399999284,
+    "elapsed_seconds": 0.3326619169999958,
+    "lu_nonzeros": 4234684
+  },
+  {
+    "scenario": "flat_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "flat_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.15,
+    "sources": 8,
+    "relative_linear_residual": 2.1382783059580273e-14,
+    "factor_seconds": 0.27423439399990457,
+    "elapsed_seconds": 0.3238666069998999,
+    "lu_nonzeros": 4208155
+  },
+  {
+    "scenario": "flat_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "flat_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.25,
+    "sources": 8,
+    "relative_linear_residual": 2.6933038537462936e-14,
+    "factor_seconds": 0.2523708159999387,
+    "elapsed_seconds": 0.30400447099987105,
+    "lu_nonzeros": 4211588
+  },
+  {
+    "scenario": "flat_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.265784102837209e-14,
+    "factor_seconds": 0.23630880800010345,
+    "elapsed_seconds": 0.32132308399991416,
+    "lu_nonzeros": 4220772
+  },
+  {
+    "scenario": "flat_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.485370677803269e-14,
+    "factor_seconds": 0.23643415600008666,
+    "elapsed_seconds": 0.3203694149999592,
+    "lu_nonzeros": 4234316
+  },
+  {
+    "scenario": "arc_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "arc_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.15,
+    "sources": 8,
+    "relative_linear_residual": 1.9633724915078523e-14,
+    "factor_seconds": 0.2393248930000027,
+    "elapsed_seconds": 0.29032483999981196,
+    "lu_nonzeros": 4208495
+  },
+  {
+    "scenario": "arc_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "arc_lf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.25,
+    "sources": 8,
+    "relative_linear_residual": 2.585614422010084e-14,
+    "factor_seconds": 0.2400064129999464,
+    "elapsed_seconds": 0.29293569399987973,
+    "lu_nonzeros": 4211526
+  },
+  {
+    "scenario": "arc_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.35,
+    "sources": 12,
+    "relative_linear_residual": 2.3435777991606714e-14,
+    "factor_seconds": 0.2477843330000269,
+    "elapsed_seconds": 0.3302217149998796,
+    "lu_nonzeros": 4221746
+  },
+  {
+    "scenario": "arc_dual",
+    "kind": "reconstruction_fullwave_replay",
+    "aperture": "center_hf",
+    "grid_shape": [
+      185,
+      254
+    ],
+    "nodes": 46990,
+    "frequency_mhz": 0.45,
+    "sources": 12,
+    "relative_linear_residual": 2.529169994457393e-14,
+    "factor_seconds": 0.23768814200002453,
+    "elapsed_seconds": 0.32041992900008154,
+    "lu_nonzeros": 4234255
+  }
+]

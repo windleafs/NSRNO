@@ -1,0 +1,31 @@
+{
+  "name": "theranostic_arc_study",
+  "geometry": {
+    "plane": "xz",
+    "center_width_mm": 38.2,
+    "center_hf_elements": 20,
+    "side_elements": 6,
+    "arc_radius_mm": 30.0,
+    "focus_z_mm": 30.0,
+    "side_angle_min_deg": 45.0,
+    "side_angle_max_deg": 70.0,
+    "hf_element_width_mm": 0.35,
+    "lf_element_width_mm": 1.0,
+    "side_receive": true
+  },
+  "bands": {"low_mhz": [0.25, 0.4, 0.55], "high_mhz": [0.65, 0.8, 1.0]},
+  "grid": {
+    "spacing_mm": 0.14,
+    "pml_mm": 10.0,
+    "x_bounds_mm": [-34.0, 34.0],
+    "z_bounds_mm": [-4.0, 40.0]
+  },
+  "reconstruction": {
+    "x_bounds_mm": [-12.0, 12.0],
+    "z_bounds_mm": [2.0, 34.0],
+    "spacing_mm": 0.8
+  },
+  "medium": {"c0_m_s": 1540.0, "rho0_kg_m3": 1000.0, "contrast_scale": 0.04},
+  "experiment": {"data_mode": "fullwave", "snr_db": 40.0, "seed": 20261118, "holdout_stride": 4, "forward_refine": 1},
+  "inversion": {"lambda0": 0.03, "lambda_gradient": 0.08, "max_iterations": 150, "bound": 0.3}
+}
